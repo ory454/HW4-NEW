@@ -108,7 +108,18 @@ void grades_destroy(struct grades *grades) {
  * - Return 0 on success. */
 int grades_add_student(struct grades *grades, const char *name, int id) {
     /* TODO: implement */
-    return 1;
+	if(!grades||!name)
+		return 1;
+	for(int i=0;i<list_size(grades->students_list);i++){
+		string iterator_id= (Student)list_get(grades->students_list))->id;
+		if (iterator_id==id){
+			return 1;
+	}
+	Student s= malloc(sizeof(Student));
+	strcopy(s->name,name);
+	s->id=id;
+	list_push_front( grades->students_list, s);
+	return 0;
 }
 
 /* TODO: grades_add_grade
@@ -124,6 +135,8 @@ int grades_add_student(struct grades *grades, const char *name, int id) {
  * - Return 0 on success. */
 int grades_add_grade(struct grades *grades, const char *name, int id,
                      int grade) {
+	if(grades)
+}
     /* TODO: implement */
     return 1;
 }
